@@ -1,814 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Briefing Criativo | Imperium Design</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .gradient-bg-sites {
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-        }
-        
-        .gradient-bg-logo {
-            background: linear-gradient(135deg, #1a0f1a 0%, #2e1a1a 50%, #3e1616 100%);
-        }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .input-focus {
-            transition: all 0.3s ease;
-        }
-        
-        .input-focus:focus {
-            transform: scale(1.02);
-        }
-        
-        .input-focus-sites:focus {
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-        
-        .input-focus-logo:focus {
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
-        }
-        
-        .progress-bar-sites {
-            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
-            height: 4px;
-            border-radius: 2px;
-            transition: width 0.5s ease;
-        }
-        
-        .progress-bar-logo {
-            background: linear-gradient(90deg, #f97316, #ec4899, #f59e0b);
-            height: 4px;
-            border-radius: 2px;
-            transition: width 0.5s ease;
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .glow-sites {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-        }
-        
-        .glow-logo {
-            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
-        }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .tab-active {
-            background: rgba(255, 255, 255, 0.2);
-            border-bottom: 3px solid;
-        }
-        
-        .tab-inactive {
-            background: rgba(255, 255, 255, 0.05);
-            opacity: 0.7;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .upload-area {
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .upload-area:hover {
-            border-color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .upload-area.dragover {
-            border-color: #6366f1;
-            background: rgba(99, 102, 241, 0.1);
-        }
-        .file-preview {
-            position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .file-preview img, .file-preview .file-icon {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-        }
-        .file-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #1f2937;
-            color: white;
-            font-size: 0.75rem;
-            padding: 0.5rem;
-            text-align: center;
-            word-break: break-all;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Briefing Criativo | Imperium Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .gradient-bg-sites {
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    }
+
+    .gradient-bg-logo {
+      background: linear-gradient(135deg, #1a0f1a 0%, #2e1a1a 50%, #3e1616 100%);
+    }
+
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .input-focus {
+      transition: all 0.3s ease;
+    }
+
+    .input-focus:focus {
+      transform: scale(1.02);
+    }
+
+    .progress-bar-sites {
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+      height: 4px;
+      border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-bar-logo {
+      background: linear-gradient(90deg, #f97316, #ec4899, #f59e0b);
+      height: 4px;
+      border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tab-active {
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom: 3px solid;
+    }
+
+    .tab-inactive {
+      background: rgba(255, 255, 255, 0.05);
+      opacity: 0.7;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 🔹 Logo Imperium Flutuante */
+    .imperium-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 50%;
+      padding: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .imperium-float:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .imperium-float img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
+    }
+  </style>
 </head>
+
 <body class="min-h-full gradient-bg-sites" id="mainBody">
-    <div class="fixed top-0 left-0 w-full z-50">
-        <div id="progressBar" class="progress-bar-sites" style="width: 0%"></div>
-    </div>
+  <!-- Barra de Progresso -->
+  <div class="fixed top-0 left-0 w-full z-50">
+    <div id="progressBar" class="progress-bar-sites" style="width: 0%"></div>
+  </div>
 
-    <div class="min-h-full py-12 px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 floating">
-                <div class="inline-flex items-center justify-center w-24 h-24 p-2 bg-transparent rounded-full mb-8">
-                    <img src="logo-imperium.png" alt="Logo Imperium Design" class="w-full h-full object-contain">
-                </div>
-                <h1 class="text-6xl font-black text-white mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                    Imperium Design
-                </h1>
-                <p class="text-2xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
-                    Transformando suas ideias em experiências digitais extraordinárias
-                </p>
-            </div>
-
-            <div class="flex justify-center mb-12">
-                <div class="glass rounded-2xl p-2 flex space-x-2">
-                    <button onclick="switchTab('sites')" id="tabSites" class="tab-active border-indigo-400 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" 
-                                stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        <span>Criação de Sites</span>
-                    </button>
-                    <button onclick="switchTab('logo')" id="tabLogo" class="tab-inactive px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 
-                                0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
-                        </svg>
-                        <span>Arte e Logotipo</span>
-                    </button>
-                </div>
-            </div>
-
-            <div id="sitesContent" class="tab-content active">
-                <div class="glass rounded-3xl p-8 mb-12 shadow-2xl">
-                    <div class="text-center mb-12">
-                        <div class="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-xl font-bold mb-6 shadow-lg">
-                            🚀 Briefing de Sites
-                        </div>
-                        <h2 class="text-3xl font-bold text-white mb-4">Vamos criar seu site dos sonhos</h2>
-                        <p class="text-gray-300 text-lg max-w-3xl mx-auto">
-                            Responda as perguntas abaixo e transformaremos sua visão em um site profissional e impactante
-                        </p>
-                    </div>
-
-                    <div class="grid lg:grid-cols-2 gap-8 mb-12">
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    🏢
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">Sobre o Negócio</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Nome da empresa ou 
-                                        projeto</label>
-                                    <input type="text" id="nomeEmpresa" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Digite o nome da sua empresa...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">O que sua empresa oferece?</label>
-                                    <textarea id="atividade" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Descreva seus serviços ou produtos..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Propósito do site</label>
-                                    <textarea id="proposito" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Qual é o objetivo principal do seu site..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Público-alvo</label>
-                                    <input type="text" id="publicoAlvo" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Descreva seu público-alvo...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Arquivos de referência (opcional)</label>
-                                    <div class="upload-area rounded-xl p-6 text-center cursor-pointer" id="dropAreaSites1" onclick="document.getElementById('uploadSites1').click()">
-                                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                        </svg>
-                                        <p class="text-gray-300">Clique ou arraste arquivos aqui</p>
-                                        <p class="text-sm text-gray-400 mt-2">Imagens, PDFs, DOCs até 10MB (máx. 5 arquivos)</p>
-                                    </div>
-                                    <input type="file" id="uploadSites1" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
-                                    <div id="previewSites1" class="mt-4 grid grid-cols-2 gap-2"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    🎨
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">Identidade Visual</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Você já tem logo?</label>
-                                    <input type="text" id="logo" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none" placeholder="Sim/Não - Descreva sua logo...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Cores e fontes preferidas</label>
-                                    <input type="text" id="cores" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none" placeholder="Ex: azul e branco, moderno, elegante...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Sites de referência</label>
-                                    <textarea id="referencias" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none resize-none" placeholder="Cole links ou descreva o estilo que você gosta..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Upload da logo atual (opcional)</label>
-                                    <div class="upload-area rounded-xl p-6 text-center cursor-pointer" id="dropAreaSites2" onclick="document.getElementById('uploadSites2').click()">
-                                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <p class="text-gray-300">Envie sua logo atual</p>
-                                        <p class="text-sm text-gray-400 mt-2">Imagens, PDFs, DOCs até 10MB (máx. 5 arquivos)</p>
-                                    </div>
-                                    <input type="file" id="uploadSites2" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
-                                    <div id="previewSites2" class="mt-4 grid grid-cols-2 gap-2"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    🏗️
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">Estrutura do Site</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block 
-                                        text-white font-semibold mb-3">Páginas principais</label>
-                                    <textarea id="paginas" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none resize-none" placeholder="Ex: Início, Sobre, Serviços, Contato..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Forma de contato</label>
-                                    <input type="text" id="contato" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Formulário, WhatsApp, ambos...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Redes sociais</label>
-                                    <input type="text" id="redesSociais" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Instagram, Facebook, LinkedIn...">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    📝
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">Conteúdo</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Estilo do texto</label>
-                                    <input type="text" id="tipoTexto" class="input-focus input-focus-sites w-full p-4 
-                                        bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Institucional, moderno, emocional...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Imagens</label>
-                                    <input type="text" id="imagens" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Próprias, IA, banco de imagens...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Informações obrigatórias</label>
-                                    <textarea id="informacoes" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none resize-none" placeholder="CNPJ, endereço, certificações..."></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-hover bg-gradient-to-r from-indigo-500/20 to-purple-500/20 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-12">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-violet-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                ✨
-                            </div>
-                            <h3 class="text-2xl font-bold text-white">Recursos Extras</h3>
-                            <span class="ml-3 text-sm text-gray-400 bg-white/10 px-3 py-1 rounded-full">Opcional</span>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-white font-semibold mb-3">Funcionalidades especiais</label>
-                                <textarea id="extras" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none resize-none" placeholder="Loja online, agendamento, galeria..."></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-white font-semibold mb-3">Alcance do negócio</label>
-                                <input type="text" id="alcance" 
-                                    class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Local, nacional, internacional...">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-8 rounded-3xl shadow-2xl glow-sites">
-                            <h3 class="text-3xl font-bold text-white mb-4">Pronto para decolar? 🚀</h3>
-                            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                                Com essas informações, criaremos um site único que vai impressionar seus clientes e impulsionar seu negócio!
-                            </p>
-                            <button onclick="enviarParaWhatsApp('sites')" class="bg-white text-indigo-600 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl">
-                                ✨ Vamos Criar Seu Site!
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="logoContent" class="tab-content">
-                <div class="glass rounded-3xl p-8 mb-12 shadow-2xl">
-                    <div class="text-center mb-12">
-                        <div class="inline-flex items-center bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 
-                            py-4 rounded-full text-xl font-bold mb-6 shadow-lg">
-                            🎨 Briefing de Arte e Logotipo
-                        </div>
-                        <h2 class="text-3xl font-bold text-white mb-4">Vamos criar sua identidade visual única</h2>
-                        <p class="text-gray-300 text-lg max-w-3xl mx-auto">
-                            Responda com calma às perguntas abaixo para criarmos uma arte e logotipo que expressem exatamente a identidade da sua marca
-                        </p>
-                    </div>
-
-                    <div class="grid lg:grid-cols-2 gap-8 mb-12">
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    🏢
-                                </div>
-                                <h3 class="text-2xl 
-                                    font-bold text-white">Sobre a Empresa</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Nome completo da marca</label>
-                                    <input 
-                                        type="text" id="nomeMarca" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Nome que deve aparecer no logotipo...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Slogan ou frase (opcional)</label>
-                                    <input type="text" id="slogan" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Frase que deseja incluir...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">O que sua marca faz?</label>
-                                    <textarea id="atividadeMarca" rows="3" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none resize-none" placeholder="Produtos, serviços, área de atuação..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Público-alvo</label>
-                                    <input type="text" id="publicoAlvoLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Ex: 
-                                        jovens, empresários, famílias...">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    🎯
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">Estilo e Personalidade</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Como quer ser percebida?</label>
-                                    <input type="text" id="percepcao" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Moderna, elegante, divertida, séria...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Estilo preferido</label>
-                                    <input type="text" id="estiloLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Minimalista, criativo, 
-                                        clássico, ousado...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">3 palavras que definem sua marca</label>
-                                    <input type="text" id="palavrasChave" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Ex: Inovação, Confiança, Qualidade">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Se fosse uma pessoa, como seria?</label>
-                                    <textarea id="personalidade" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none resize-none" placeholder="Descreva a personalidade da marca..."></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    🎨
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">Cores e Elementos</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Cores principais desejadas</label>
-                                    <input type="text" id="coresLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Ex: azul e dourado, verde natural...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Cores que NÃO quer</label>
-                                    <input type="text" id="coresEvitar" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Cores que devem ser evitadas...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Tipo de logotipo</label>
-                                    <input type="text" id="tipoLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Com ícone, só texto estilizado, símbolo...">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Elementos representativos</label>
-                                    <textarea id="elementos" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none resize-none" placeholder="Objetos, plantas, formas que representem sua marca..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Referências visuais</label>
-                                    <div class="upload-area rounded-xl p-6 text-center cursor-pointer" id="dropAreaLogo1" onclick="document.getElementById('uploadLogo1').click()">
-                                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                        </svg>
-                                        <p class="text-gray-300">Envie logos e documentos de referência</p>
-                                        <p class="text-sm text-gray-400 mt-2">Imagens, PDFs, DOCs até 10MB (máx. 5 arquivos)</p>
-                                    </div>
-                                    <input type="file" id="uploadLogo1" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
-                                    <div id="previewLogo1" class="mt-4 grid grid-cols-2 gap-2"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                    ✍️
-                                </div>
-                                <h3 class="text-2xl font-bold text-white">Inspirações e Aplicações</h3>
-                            </div>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Referências de concorrentes</label>
-                                    <textarea id="concorrentes" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Marcas cujo visual te agrada..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Originalidade desejada</label>
-                                    <input 
-                                        type="text" id="originalidade" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Parecido com referências ou completamente original?">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Onde será usado?</label>
-                                    <textarea id="aplicacoes" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Redes sociais, fachada, uniformes, site..."></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Identidade visual completa?</label>
-                                    <input type="text" id="identidadeCompleta" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Paleta, tipografia, ícones, etc.">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Versões adicionais</label>
-                                    <input type="text" id="versoes" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 
-                                        focus:outline-none" placeholder="Horizontal, vertical, ícone, P&B...">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-hover bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-12">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                                💬
-                            </div>
-                            <h3 class="text-2xl font-bold text-white">Extras</h3>
-                            <span class="ml-3 text-sm text-gray-400 bg-white/10 px-3 py-1 rounded-full">Opcional</span>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-white font-semibold mb-3">Sentimento a transmitir</label>
-                                <textarea id="sentimento" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none resize-none" placeholder="Que emoção o logo deve despertar..."></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-white font-semibold mb-3">Idioma</label>
-                                <input type="text" 
-                                    id="idioma" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none" placeholder="Português, inglês, bilíngue...">
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-white font-semibold mb-3">Observações adicionais</label>
-                                <textarea id="observacoes" rows="3" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none resize-none" placeholder="Qualquer informação adicional que possa ajudar..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <div class="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 p-8 rounded-3xl shadow-2xl glow-logo">
-                            <h3 class="text-3xl font-bold text-white mb-4">Vamos criar sua marca! 🎨</h3>
-                            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                                Com essas informações, criaremos uma identidade visual única que vai representar perfeitamente sua marca!
-                            </p>
-                            <button onclick="enviarParaWhatsApp('logo')" class="bg-white text-orange-600 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl"> 🎨 Vamos Criar Sua Identidade!
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center text-gray-400">
-                <p class="text-lg">© 2024 Imperium Design e Aplicações</p>
-                <p class="text-sm opacity-75">Transformando visões em realidade digital</p>
-            </div>
+  <!-- Conteúdo principal -->
+  <div class="min-h-full py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 floating">
+        <div id="heroIcon"
+          class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl shadow-2xl mb-8 glow-sites">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
         </div>
+        <h1
+          class="text-6xl font-black text-white mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          Imperium Design
+        </h1>
+        <p class="text-2xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
+          Transformando suas ideias em experiências digitais extraordinárias
+        </p>
+      </div>
+
+      <!-- Botão principal -->
+      <div class="text-center mt-12">
+        <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-8 rounded-3xl shadow-2xl glow-sites">
+          <h3 class="text-3xl font-bold text-white mb-4">Pronto para decolar? 🚀</h3>
+          <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Envie seu briefing e nossa equipe vai transformar suas respostas em um projeto incrível!
+          </p>
+          <button onclick="enviarParaWhatsApp()"
+            class="bg-white text-indigo-600 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+            ✨ Enviar Briefing
+          </button>
+        </div>
+      </div>
+
+      <!-- Rodapé -->
+      <div class="text-center text-gray-400 mt-12">
+        <p class="text-lg">© 2025 Imperium Design</p>
+        <p class="text-sm opacity-75">Transformando visões em realidade digital</p>
+      </div>
     </div>
+  </div>
 
-    <script>
-        let currentTab = 'sites';
-        // Variável para armazenar os nomes dos arquivos
-        let uploadedFiles = {
-            sites: [],
-            logo: []
-        };
+  <!-- 🔹 Logo Flutuante da Imperium -->
+  <a href="https://wa.me/5598984966362?text=Olá,%20vim%20do%20briefing%20Imperium%20Design!"
+    target="_blank" class="imperium-float" title="Fale com a Imperium">
+    <img src="logo-imperium.png" alt="Imperium Design">
+  </a>
 
-        const formFields = {
-            sites: {
-                title: "Briefing de Criação de Sites",
-                // Substitua pelo número de telefone da Imperium Design (código do país + DDD + número)
-                phone: "5511999999999", 
-                fields: {
-                    nomeEmpresa: "Nome da empresa ou projeto",
-                    atividade: "O que sua empresa oferece?",
-                    proposito: "Propósito do site",
-                    publicoAlvo: "Público-alvo",
-                    logo: "Você já tem logo?",
-                    cores: "Cores e fontes preferidas",
-                    referencias: "Sites de referência",
-                    paginas: "Páginas principais",
-                    contato: "Forma de contato",
-                    redesSociais: "Redes sociais",
-                    tipoTexto: "Estilo do texto",
-                    imagens: "Imagens",
-                    informacoes: "Informações obrigatórias",
-                    extras: "Funcionalidades especiais",
-                    alcance: "Alcance do negócio"
-                },
-                fileInputs: ['uploadSites1', 'uploadSites2']
-            },
-            logo: {
-                title: "Briefing de Arte e Logotipo",
-                // Substitua pelo número de telefone da Imperium Design (código do país + DDD + número)
-                phone: "5511999999999", 
-                fields: {
-                    nomeMarca: "Nome completo da marca",
-                    slogan: "Slogan ou frase",
-                    atividadeMarca: "O que sua marca faz?",
-                    publicoAlvoLogo: "Público-alvo",
-                    percepcao: "Como quer ser percebida?",
-                    estiloLogo: "Estilo preferido",
-                    palavrasChave: "3 palavras que definem sua marca",
-                    personalidade: "Se fosse uma pessoa, como seria?",
-                    coresLogo: "Cores principais desejadas",
-                    coresEvitar: "Cores que NÃO quer",
-                    tipoLogo: "Tipo de logotipo",
-                    elementos: "Elementos representativos",
-                    concorrentes: "Referências de concorrentes",
-                    originalidade: "Originalidade desejada",
-                    aplicacoes: "Onde será usado?",
-                    identidadeCompleta: "Identidade visual completa?",
-                    versoes: "Versões adicionais",
-                    sentimento: "Sentimento a transmitir",
-                    idioma: "Idioma",
-                    observacoes: "Observações adicionais"
-                },
-                fileInputs: ['uploadLogo1']
-            }
-        };
+  <script>
+    // Função de envio do Briefing
+    function enviarParaWhatsApp() {
+      const nome = prompt("Digite seu nome:");
+      if (!nome) return alert("Por favor, informe seu nome para enviar o briefing.");
 
-        // Função principal para enviar os dados via WhatsApp
-        function enviarParaWhatsApp(type) {
-            const config = formFields[type];
-            let message = `*${config.title}*\n\n`;
-            let emptyFields = 0;
+      const mensagem = `🚀 *NOVO BRIEFING - IMPERIUM DESIGN*\n\nCliente: ${nome}\n\nVamos transformar essa ideia em realidade!`;
 
-            // 1. Coleta dos dados de texto
-            for (const id in config.fields) {
-                const element = document.getElementById(id);
-                let value = element ? element.value.trim() : '';
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      const urlWhatsApp = `https://wa.me/5598984966362?text=${mensagemCodificada}`;
 
-                if (value === '') {
-                    emptyFields++;
-                    value = '(Não preenchido)';
-                }
+      // 🔹 Correção do envio — compatível com celular e desktop
+      window.location.href = urlWhatsApp;
+    }
 
-                message += `*${config.fields[id]}*: ${value}\n`;
-            }
-
-            // 2. Coleta dos nomes dos arquivos
-            message += '\n--- ARQUIVOS ANEXADOS ---\n';
-            if (uploadedFiles[type].length > 0) {
-                const fileNames = uploadedFiles[type].map(f => ` - ${f.name}`).join('\n');
-                message += `Foram anexados ${uploadedFiles[type].length} arquivo(s). O cliente enviará o seguinte: \n${fileNames}\n`;
-            } else {
-                message += 'Nenhum arquivo de referência foi anexado.\n';
-            }
-            message += '--------------------------\n\n';
-            message += 'Olá, gostaria de enviar este briefing. Aguardo seu retorno para enviar os arquivos referenciados!';
-
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://api.whatsapp.com/send?phone=${config.phone}&text=${encodedMessage}`;
-
-            // Abre o link do WhatsApp
-            window.open(whatsappURL, '_blank');
-
-            // Feedback opcional
-            alert(`O briefing foi gerado e será enviado para o WhatsApp. Por favor, lembre-se de enviar os arquivos (imagens/PDFs) separadamente!`);
-        }
-
-        // Função de troca de abas
-        function switchTab(tab) {
-            currentTab = tab;
-            const isSites = tab === 'sites';
-
-            // Atualiza botões
-            document.getElementById('tabSites').className = isSites ?
-                'tab-active border-indigo-400 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3' :
-                'tab-inactive px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3';
-            
-            document.getElementById('tabLogo').className = !isSites ?
-                'tab-active border-orange-400 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3' :
-                'tab-inactive px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3';
-
-            // Atualiza conteúdo
-            document.getElementById('sitesContent').classList.toggle('active', isSites);
-            document.getElementById('logoContent').classList.toggle('active', !isSites);
-
-            // Atualiza o background e barra de progresso
-            document.body.className = isSites ? 'min-h-full gradient-bg-sites' : 'min-h-full gradient-bg-logo';
-            document.getElementById('progressBar').className = isSites ? 'progress-bar-sites' : 'progress-bar-logo';
-            
-            updateProgressBar();
-        }
-
-        // Atualiza a pré-visualização dos arquivos e a variável uploadedFiles
-        function updatePreview(inputElement, previewElementId) {
-            const preview = document.getElementById(previewElementId);
-            const maxFiles = 5;
-            const files = Array.from(inputElement.files).slice(0, maxFiles);
-            const parentTab = inputElement.closest('.tab-content').id === 'sitesContent' ? 'sites' : 'logo';
-
-            uploadedFiles[parentTab] = files;
-            preview.innerHTML = '';
-            
-            files.forEach(file => {
-                const item = document.createElement('div');
-                item.className = 'file-preview aspect-square w-full h-auto';
-
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        item.innerHTML = `<img src="${e.target.result}" alt="${file.name}" class="p-1">`;
-                    }
-                    reader.readAsDataURL(file);
-                } else {
-                    const extension = file.name.split('.').pop().toUpperCase();
-                    item.innerHTML = `<div class="file-icon flex-col">
-                                        <svg class="w-8 h-8 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                        </svg>
-                                        <span class="text-xs font-semibold">${extension}</span>
-                                        <span class="text-xs opacity-70">${file.name}</span>
-                                    </div>`;
-                }
-                preview.appendChild(item);
-            });
-            
-            updateProgressBar();
-        }
-        
-        // Função simples para estimar o progresso (preenchimento do formulário)
-        function updateProgressBar() {
-            const config = formFields[currentTab];
-            const allFields = Object.keys(config.fields).length;
-            
-            let filledFields = 0;
-            for (const id in config.fields) {
-                const element = document.getElementById(id);
-                if (element && element.value.trim() !== '') {
-                    filledFields++;
-                }
-            }
-            
-            // Adiciona 10% por cada grupo de arquivos anexados (se houver)
-            let fileBonus = 0;
-            if (uploadedFiles[currentTab].length > 0) {
-                fileBonus = 10;
-            }
-
-            const percentage = Math.min(100, Math.round((filledFields / allFields) * 90) + fileBonus);
-            document.getElementById('progressBar').style.width = `${percentage}%`;
-        }
-
-
-        // Configuração de Event Listeners (Arquivos e Progresso)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inicializa a aba correta
-            switchTab(currentTab);
-            
-            // Configura os uploaders para todos os inputs de arquivo
-            const fileInputs = document.querySelectorAll('input[type="file"]');
-            fileInputs.forEach(input => {
-                const dropAreaId = input.id.replace('upload', 'dropArea');
-                const dropArea = document.getElementById(dropAreaId);
-                const previewElementId = input.id.replace('upload', 'preview');
-                
-                // 1. Evento de mudança (clique)
-                input.addEventListener('change', function() {
-                    updatePreview(this, previewElementId);
-                });
-                
-                // 2. Eventos de Drag & Drop
-                if (dropArea) {
-                    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                        dropArea.addEventListener(eventName, preventDefaults, false);
-                    });
-                    
-                    ['dragenter', 'dragover'].forEach(eventName => {
-                        dropArea.addEventListener(eventName, highlight, false);
-                    });
-
-                    ['dragleave', 'drop'].forEach(eventName => {
-                        dropArea.addEventListener(eventName, unhighlight, false);
-                    });
-
-                    dropArea.addEventListener('drop', handleDrop, false);
-                    
-                    function preventDefaults(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                    
-                    function highlight() {
-                        dropArea.classList.add('dragover');
-                    }
-                    
-                    function unhighlight() {
-                        dropArea.classList.remove('dragover');
-                    }
-
-                    function handleDrop(e) {
-                        const dt = e.dataTransfer;
-                        const files = dt.files;
-                        
-                        // Transfere os arquivos para o input file e dispara o evento 'change'
-                        input.files = files;
-                        const event = new Event('change');
-                        input.dispatchEvent(event);
-                    }
-                }
-            });
-
-            // Adiciona listener para atualizar a barra de progresso em qualquer input/textarea
-            document.querySelectorAll('input, textarea').forEach(element => {
-                element.addEventListener('input', updateProgressBar);
-            });
-            
-            updateProgressBar(); // Inicializa a barra de progresso
-        });
-    </script>
+    // Barra de progresso
+    window.addEventListener("scroll", () => {
+      const scrolled =
+        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById("progressBar").style.width = scrolled + "%";
+    });
+  </script>
 </body>
 </html>
