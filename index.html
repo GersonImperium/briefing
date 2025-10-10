@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing Criativo | Imperium Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg-sites {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .gradient-bg-logo {
+            background: linear-gradient(135deg, #1a0f1a 0%, #2e1a1a 50%, #3e1616 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        
+        .input-focus:focus {
+            transform: scale(1.02);
+        }
+        
+        .input-focus-sites:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .input-focus-logo:focus {
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+        
+        .progress-bar-sites {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+            height: 4px;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-bar-logo {
+            background: linear-gradient(90deg, #f97316, #ec4899, #f59e0b);
+            height: 4px;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .glow-sites {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .glow-logo {
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-active {
+            background: rgba(255, 255, 255, 0.2);
+            border-bottom: 3px solid;
+        }
+        
+        .tab-inactive {
+            background: rgba(255, 255, 255, 0.05);
+            opacity: 0.7;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .upload-area.dragover {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-full" id="mainBody">
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 w-full z-50">
+        <div id="progressBar" class="progress-bar-sites" style="width: 0%"></div>
+    </div>
+
+    <div class="min-h-full py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Hero Section -->
+            <div class="text-center mb-16 floating">
+                <div id="heroIcon" class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl shadow-2xl mb-8 glow-sites">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-6xl font-black text-white mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                    Imperium Design
+                </h1>
+                <p class="text-2xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
+                    Transformando suas ideias em experiências digitais extraordinárias
+                </p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex justify-center mb-12">
+                <div class="glass rounded-2xl p-2 flex space-x-2">
+                    <button onclick="switchTab('sites')" id="tabSites" class="tab-active border-indigo-400 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>Criação de Sites</span>
+                    </button>
+                    <button onclick="switchTab('logo')" id="tabLogo" class="tab-inactive px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                        </svg>
+                        <span>Arte e Logotipo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sites Tab Content -->
+            <div id="sitesContent" class="tab-content active">
+                <div class="glass rounded-3xl p-8 mb-12 shadow-2xl">
+                    <!-- Form Header -->
+                    <div class="text-center mb-12">
+                        <div class="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-xl font-bold mb-6 shadow-lg">
+                            🚀 Briefing de Sites
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Vamos criar seu site dos sonhos</h2>
+                        <p class="text-gray-300 text-lg max-w-3xl mx-auto">
+                            Responda as perguntas abaixo e transformaremos sua visão em um site profissional e impactante
+                        </p>
+                    </div>
+
+                    <!-- Cards Grid -->
+                    <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                        <!-- Card 1: Sobre o Negócio -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    🏢
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Sobre o Negócio</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Nome da empresa ou projeto</label>
+                                    <input type="text" id="nomeEmpresa" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Digite o nome da sua empresa...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">O que sua empresa oferece?</label>
+                                    <textarea id="atividade" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Descreva seus serviços ou produtos..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Propósito do site</label>
+                                    <textarea id="proposito" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Qual é o objetivo principal do seu site..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Público-alvo</label>
+                                    <input type="text" id="publicoAlvo" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Descreva seu público-alvo...">
+                                </div>
+                                <!-- Upload de Arquivos -->
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Arquivos de referência (opcional)</label>
+                                    <div class="upload-area rounded-xl p-6 text-center cursor-pointer" onclick="document.getElementById('uploadSites1').click()">
+                                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                        </svg>
+                                        <p class="text-gray-300">Clique ou arraste arquivos aqui</p>
+                                        <p class="text-sm text-gray-400 mt-2">Imagens, PDFs, DOCs até 10MB (máx. 5 arquivos)</p>
+                                    </div>
+                                    <input type="file" id="uploadSites1" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
+                                    <div id="previewSites1" class="mt-4 grid grid-cols-2 gap-2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Identidade Visual -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    🎨
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Identidade Visual</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Você já tem logo?</label>
+                                    <input type="text" id="logo" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none" placeholder="Sim/Não - Descreva sua logo...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Cores e fontes preferidas</label>
+                                    <input type="text" id="cores" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none" placeholder="Ex: azul e branco, moderno, elegante...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Sites de referência</label>
+                                    <textarea id="referencias" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-400 focus:outline-none resize-none" placeholder="Cole links ou descreva o estilo que você gosta..."></textarea>
+                                </div>
+                                <!-- Upload de Logo -->
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Upload da logo atual (opcional)</label>
+                                    <div class="upload-area rounded-xl p-6 text-center cursor-pointer" onclick="document.getElementById('uploadSites2').click()">
+                                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <p class="text-gray-300">Envie sua logo atual</p>
+                                        <p class="text-sm text-gray-400 mt-2">Imagens, PDFs, DOCs até 10MB (máx. 5 arquivos)</p>
+                                    </div>
+                                    <input type="file" id="uploadSites2" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
+                                    <div id="previewSites2" class="mt-4 grid grid-cols-2 gap-2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Estrutura do Site -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    🏗️
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Estrutura do Site</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Páginas principais</label>
+                                    <textarea id="paginas" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none resize-none" placeholder="Ex: Início, Sobre, Serviços, Contato..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Forma de contato</label>
+                                    <input type="text" id="contato" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Formulário, WhatsApp, ambos...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Redes sociais</label>
+                                    <input type="text" id="redesSociais" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Instagram, Facebook, LinkedIn...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Conteúdo -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    📝
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Conteúdo</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Estilo do texto</label>
+                                    <input type="text" id="tipoTexto" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Institucional, moderno, emocional...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Imagens</label>
+                                    <input type="text" id="imagens" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Próprias, IA, banco de imagens...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Informações obrigatórias</label>
+                                    <textarea id="informacoes" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none resize-none" placeholder="CNPJ, endereço, certificações..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extras Section -->
+                    <div class="card-hover bg-gradient-to-r from-indigo-500/20 to-purple-500/20 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-12">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-violet-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                ✨
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Recursos Extras</h3>
+                            <span class="ml-3 text-sm text-gray-400 bg-white/10 px-3 py-1 rounded-full">Opcional</span>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-white font-semibold mb-3">Funcionalidades especiais</label>
+                                <textarea id="extras" rows="3" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none resize-none" placeholder="Loja online, agendamento, galeria..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-white font-semibold mb-3">Alcance do negócio</label>
+                                <input type="text" id="alcance" class="input-focus input-focus-sites w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Local, nacional, internacional...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Section -->
+                    <div class="text-center">
+                        <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-8 rounded-3xl shadow-2xl glow-sites">
+                            <h3 class="text-3xl font-bold text-white mb-4">Pronto para decolar? 🚀</h3>
+                            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                                Com essas informações, criaremos um site único que vai impressionar seus clientes e impulsionar seu negócio!
+                            </p>
+                            <button onclick="enviarParaWhatsApp('sites')" class="bg-white text-indigo-600 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                                ✨ Vamos Criar Seu Site!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo Tab Content -->
+            <div id="logoContent" class="tab-content">
+                <div class="glass rounded-3xl p-8 mb-12 shadow-2xl">
+                    <!-- Form Header -->
+                    <div class="text-center mb-12">
+                        <div class="inline-flex items-center bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-full text-xl font-bold mb-6 shadow-lg">
+                            🎨 Briefing de Arte e Logotipo
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Vamos criar sua identidade visual única</h2>
+                        <p class="text-gray-300 text-lg max-w-3xl mx-auto">
+                            Responda com calma às perguntas abaixo para criarmos uma arte e logotipo que expressem exatamente a identidade da sua marca
+                        </p>
+                    </div>
+
+                    <!-- Cards Grid -->
+                    <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                        <!-- Card 1: Sobre a Empresa -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    🏢
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Sobre a Empresa</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Nome completo da marca</label>
+                                    <input type="text" id="nomeMarca" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Nome que deve aparecer no logotipo...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Slogan ou frase (opcional)</label>
+                                    <input type="text" id="slogan" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Frase que deseja incluir...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">O que sua marca faz?</label>
+                                    <textarea id="atividadeMarca" rows="3" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none resize-none" placeholder="Produtos, serviços, área de atuação..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Público-alvo</label>
+                                    <input type="text" id="publicoAlvoLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none" placeholder="Ex: jovens, empresários, famílias...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Estilo e Personalidade -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    🎯
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Estilo e Personalidade</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Como quer ser percebida?</label>
+                                    <input type="text" id="percepcao" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Moderna, elegante, divertida, séria...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Estilo preferido</label>
+                                    <input type="text" id="estiloLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Minimalista, criativo, clássico, ousado...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">3 palavras que definem sua marca</label>
+                                    <input type="text" id="palavrasChave" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none" placeholder="Ex: Inovação, Confiança, Qualidade">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Se fosse uma pessoa, como seria?</label>
+                                    <textarea id="personalidade" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:outline-none resize-none" placeholder="Descreva a personalidade da marca..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Cores e Elementos -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    🎨
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Cores e Elementos</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Cores principais desejadas</label>
+                                    <input type="text" id="coresLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Ex: azul e dourado, verde natural...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Cores que NÃO quer</label>
+                                    <input type="text" id="coresEvitar" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Cores que devem ser evitadas...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Tipo de logotipo</label>
+                                    <input type="text" id="tipoLogo" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none" placeholder="Com ícone, só texto estilizado, símbolo...">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Elementos representativos</label>
+                                    <textarea id="elementos" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-green-400 focus:outline-none resize-none" placeholder="Objetos, plantas, formas que representem sua marca..."></textarea>
+                                </div>
+                                <!-- Upload de Referências -->
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Referências visuais</label>
+                                    <div class="upload-area rounded-xl p-6 text-center cursor-pointer" onclick="document.getElementById('uploadLogo1').click()">
+                                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                        </svg>
+                                        <p class="text-gray-300">Envie logos e documentos de referência</p>
+                                        <p class="text-sm text-gray-400 mt-2">Imagens, PDFs, DOCs até 10MB (máx. 5 arquivos)</p>
+                                    </div>
+                                    <input type="file" id="uploadLogo1" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
+                                    <div id="previewLogo1" class="mt-4 grid grid-cols-2 gap-2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Inspirações e Aplicações -->
+                        <div class="card-hover bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                    ✍️
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Inspirações e Aplicações</h3>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Referências de concorrentes</label>
+                                    <textarea id="concorrentes" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Marcas cujo visual te agrada..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Originalidade desejada</label>
+                                    <input type="text" id="originalidade" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Parecido com referências ou completamente original?">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Onde será usado?</label>
+                                    <textarea id="aplicacoes" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none resize-none" placeholder="Redes sociais, fachada, uniformes, site..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Identidade visual completa?</label>
+                                    <input type="text" id="identidadeCompleta" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Paleta, tipografia, ícones, etc.">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Versões adicionais</label>
+                                    <input type="text" id="versoes" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none" placeholder="Horizontal, vertical, ícone, P&B...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extras Section -->
+                    <div class="card-hover bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-12">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                                💬
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Extras</h3>
+                            <span class="ml-3 text-sm text-gray-400 bg-white/10 px-3 py-1 rounded-full">Opcional</span>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-white font-semibold mb-3">Sentimento a transmitir</label>
+                                <textarea id="sentimento" rows="2" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none resize-none" placeholder="Que emoção o logo deve despertar..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-white font-semibold mb-3">Idioma</label>
+                                <input type="text" id="idioma" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none" placeholder="Português, inglês, bilíngue...">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-white font-semibold mb-3">Observações adicionais</label>
+                                <textarea id="observacoes" rows="3" class="input-focus input-focus-logo w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none resize-none" placeholder="Qualquer informação adicional que possa ajudar..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Section -->
+                    <div class="text-center">
+                        <div class="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 p-8 rounded-3xl shadow-2xl glow-logo">
+                            <h3 class="text-3xl font-bold text-white mb-4">Vamos criar sua marca! 🎨</h3>
+                            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                                Com essas informações, criaremos uma identidade visual única que vai representar perfeitamente sua marca!
+                            </p>
+                            <button onclick="enviarParaWhatsApp('logo')" class="bg-white text-orange-600 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                                🎨 Vamos Criar Sua Identidade!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center text-gray-400">
+                <p class="text-lg">© 2024 Imperium Design e Aplicações</p>
+                <p class="text-sm opacity-75">Transformando visões em realidade digital</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentTab = 'sites';
+        let uploadedFiles = {
+            sites: [],
+            logo: []
+        };
+
+        // Tab switching
+        function switchTab(tab) {
+            currentTab = tab;
+            
+            // Update tab buttons
+            document.getElementById('tabSites').className = tab === 'sites' ? 
+                'tab-active border-indigo-400 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3' :
+                'tab-inactive px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3';
+            
+            document.getElementById('tabLogo').className = tab === 'logo' ? 
+                'tab-active border-orange-400 px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3' :
+                'tab-inactive px-8 py-4 rounded-xl font-bold text-white transition-all duration-300 flex items-center space-x-3';
+            
+            // Update content
+            document.getElementById('sitesContent').className = tab === 'sites' ? 'tab-content active' : 'tab-content';
+            document.getElementById('logoContent').className = tab === 'logo' ? 'tab-content active' : 'tab-content';
+            
+            // Update background and progress bar
+            const body = document.getElementById('mainBody');
+            const progressBar = document.getElementById('progressBar');
+            const heroIcon = document.getElementById('heroIcon');
+            
+            if (tab === 'sites') {
+                body.className = 'min-h-full gradient-bg-sites';
+                progressBar.className = 'progress-bar-sites';
+                heroIcon.className = 'inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl shadow-2xl mb-8 glow-sites';
+            } else {
+                body.className = 'min-h-full gradient-bg-logo';
+                progressBar.className = 'progress-bar-logo';
+                heroIcon.className = 'inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl shadow-2xl mb-8 glow-logo';
+            }
+        }
+
+        // Progress bar animation
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // File upload handling
+        function setupFileUpload(inputId, previewId, multiple = false) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            
+            input.addEventListener('change', function(e) {
+                const files = Array.from(e.target.files);
+                
+                // Limit to 5 files
+                if (files.length > 5) {
+                    alert('Máximo de 5 arquivos permitidos! 📁');
+                    return;
+                }
+                
+                // Check file size (10MB limit)
+                const maxSize = 10 * 1024 * 1024; // 10MB
+                for (let file of files) {
+                    if (file.size > maxSize) {
+                        alert(`Arquivo "${file.name}" é muito grande! Máximo 10MB por arquivo. 📏`);
+                        return;
+                    }
+                }
+                
+                preview.innerHTML = '';
+                
+                files.forEach((file, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'relative bg-white/5 p-3 rounded-lg border border-white/10';
+                    
+                    // Get file icon based on type
+                    let icon = '📄'; // Default document icon
+                    if (file.type.startsWith('image/')) {
+                        icon = '🖼️';
+                    } else if (file.type.includes('pdf')) {
+                        icon = '📕';
+                    } else if (file.type.includes('doc')) {
+                        icon = '📘';
+                    } else if (file.type.includes('xml')) {
+                        icon = '📋';
+                    } else if (file.type.includes('text')) {
+                        icon = '📝';
+                    }
+                    
+                    if (file.type.startsWith('image/')) {
+                        // Show image preview
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            div.innerHTML = `
+                                <img src="${e.target.result}" class="w-full h-20 object-cover rounded-lg mb-2">
+                                <button onclick="removeFile('${inputId}', ${index})" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-colors">×</button>
+                                <p class="text-xs text-gray-300 truncate">${file.name}</p>
+                                <p class="text-xs text-gray-500">${(file.size / 1024 / 1024).toFixed(1)}MB</p>
+                            `;
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        // Show document preview
+                        div.innerHTML = `
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="text-2xl">${icon}</span>
+                                <div class="flex-1">
+                                    <p class="text-sm text-white font-medium truncate">${file.name}</p>
+                                    <p class="text-xs text-gray-400">${(file.size / 1024 / 1024).toFixed(1)}MB</p>
+                                </div>
+                            </div>
+                            <button onclick="removeFile('${inputId}', ${index})" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-colors">×</button>
+                        `;
+                    }
+                    
+                    preview.appendChild(div);
+                });
+            });
+        }
+
+        function removeFile(inputId, index) {
+            const input = document.getElementById(inputId);
+            const dt = new DataTransfer();
+            const files = Array.from(input.files);
+            
+            files.forEach((file, i) => {
+                if (i !== index) dt.items.add(file);
+            });
+            
+            input.files = dt.files;
+            input.dispatchEvent(new Event('change'));
+        }
+
+        // Form submission
+        function enviarParaWhatsApp(tipo) {
+            if (tipo === 'sites') {
+                const nomeEmpresa = document.getElementById('nomeEmpresa').value;
+                const atividade = document.getElementById('atividade').value;
+                const proposito = document.getElementById('proposito').value;
+                const publicoAlvo = document.getElementById('publicoAlvo').value;
+                const logo = document.getElementById('logo').value;
+                const cores = document.getElementById('cores').value;
+                const referencias = document.getElementById('referencias').value;
+                const paginas = document.getElementById('paginas').value;
+                const contato = document.getElementById('contato').value;
+                const redesSociais = document.getElementById('redesSociais').value;
+                const tipoTexto = document.getElementById('tipoTexto').value;
+                const imagens = document.getElementById('imagens').value;
+                const informacoes = document.getElementById('informacoes').value;
+                const extras = document.getElementById('extras').value;
+                const alcance = document.getElementById('alcance').value;
+
+                if (!nomeEmpresa.trim()) {
+                    alert('Por favor, preencha pelo menos o nome da empresa para continuar! 🚀');
+                    return;
+                }
+
+                let mensagem = `🚀 *BRIEFING DE SITES - IMPERIUM DESIGN*\n\n`;
+                mensagem += `*EMPRESA:* ${nomeEmpresa}\n\n`;
+                
+                mensagem += `🏢 *SOBRE O NEGÓCIO*\n`;
+                if (atividade) mensagem += `• Atividade: ${atividade}\n`;
+                if (proposito) mensagem += `• Propósito: ${proposito}\n`;
+                if (publicoAlvo) mensagem += `• Público-alvo: ${publicoAlvo}\n`;
+                mensagem += `\n`;
+
+                mensagem += `🎨 *IDENTIDADE VISUAL*\n`;
+                if (logo) mensagem += `• Logo: ${logo}\n`;
+                if (cores) mensagem += `• Cores/Estilo: ${cores}\n`;
+                if (referencias) mensagem += `• Referências: ${referencias}\n`;
+                mensagem += `\n`;
+
+                mensagem += `🏗️ *ESTRUTURA*\n`;
+                if (paginas) mensagem += `• Páginas: ${paginas}\n`;
+                if (contato) mensagem += `• Contato: ${contato}\n`;
+                if (redesSociais) mensagem += `• Redes sociais: ${redesSociais}\n`;
+                mensagem += `\n`;
+
+                mensagem += `📝 *CONTEÚDO*\n`;
+                if (tipoTexto) mensagem += `• Estilo do texto: ${tipoTexto}\n`;
+                if (imagens) mensagem += `• Imagens: ${imagens}\n`;
+                if (informacoes) mensagem += `• Info obrigatórias: ${informacoes}\n`;
+                mensagem += `\n`;
+
+                mensagem += `✨ *EXTRAS*\n`;
+                if (extras) mensagem += `• Funcionalidades: ${extras}\n`;
+                if (alcance) mensagem += `• Alcance: ${alcance}\n`;
+                mensagem += `\n`;
+
+                // Add file information
+                const uploadSites1 = document.getElementById('uploadSites1');
+                const uploadSites2 = document.getElementById('uploadSites2');
+                
+                if (uploadSites1.files.length > 0 || uploadSites2.files.length > 0) {
+                    mensagem += `📁 *ARQUIVOS ENVIADOS*\n`;
+                    
+                    if (uploadSites1.files.length > 0) {
+                        mensagem += `• Referências (${uploadSites1.files.length} arquivos):\n`;
+                        Array.from(uploadSites1.files).forEach(file => {
+                            mensagem += `  - ${file.name} (${(file.size / 1024 / 1024).toFixed(1)}MB)\n`;
+                        });
+                    }
+                    
+                    if (uploadSites2.files.length > 0) {
+                        mensagem += `• Logo atual (${uploadSites2.files.length} arquivos):\n`;
+                        Array.from(uploadSites2.files).forEach(file => {
+                            mensagem += `  - ${file.name} (${(file.size / 1024 / 1024).toFixed(1)}MB)\n`;
+                        });
+                    }
+                    mensagem += `\n`;
+                }
+
+                mensagem += `🎯 *Vamos criar um site incrível!*`;
+
+            } else if (tipo === 'logo') {
+                const nomeMarca = document.getElementById('nomeMarca').value;
+                const slogan = document.getElementById('slogan').value;
+                const atividadeMarca = document.getElementById('atividadeMarca').value;
+                const publicoAlvoLogo = document.getElementById('publicoAlvoLogo').value;
+                const percepcao = document.getElementById('percepcao').value;
+                const estiloLogo = document.getElementById('estiloLogo').value;
+                const palavrasChave = document.getElementById('palavrasChave').value;
+                const personalidade = document.getElementById('personalidade').value;
+                const coresLogo = document.getElementById('coresLogo').value;
+                const coresEvitar = document.getElementById('coresEvitar').value;
+                const tipoLogo = document.getElementById('tipoLogo').value;
+                const elementos = document.getElementById('elementos').value;
+                const concorrentes = document.getElementById('concorrentes').value;
+                const originalidade = document.getElementById('originalidade').value;
+                const aplicacoes = document.getElementById('aplicacoes').value;
+                const identidadeCompleta = document.getElementById('identidadeCompleta').value;
+                const versoes = document.getElementById('versoes').value;
+                const sentimento = document.getElementById('sentimento').value;
+                const idioma = document.getElementById('idioma').value;
+                const observacoes = document.getElementById('observacoes').value;
+
+                if (!nomeMarca.trim()) {
+                    alert('Por favor, preencha pelo menos o nome da marca para continuar! 🎨');
+                    return;
+                }
+
+                let mensagem = `🎨 *BRIEFING DE ARTE E LOGOTIPO - IMPERIUM DESIGN*\n\n`;
+                mensagem += `*MARCA:* ${nomeMarca}\n\n`;
+                
+                mensagem += `🏢 *SOBRE A EMPRESA*\n`;
+                if (slogan) mensagem += `• Slogan: ${slogan}\n`;
+                if (atividadeMarca) mensagem += `• Atividade: ${atividadeMarca}\n`;
+                if (publicoAlvoLogo) mensagem += `• Público-alvo: ${publicoAlvoLogo}\n`;
+                mensagem += `\n`;
+
+                mensagem += `🎯 *ESTILO E PERSONALIDADE*\n`;
+                if (percepcao) mensagem += `• Percepção desejada: ${percepcao}\n`;
+                if (estiloLogo) mensagem += `• Estilo: ${estiloLogo}\n`;
+                if (palavrasChave) mensagem += `• Palavras-chave: ${palavrasChave}\n`;
+                if (personalidade) mensagem += `• Personalidade: ${personalidade}\n`;
+                mensagem += `\n`;
+
+                mensagem += `🎨 *CORES E ELEMENTOS*\n`;
+                if (coresLogo) mensagem += `• Cores desejadas: ${coresLogo}\n`;
+                if (coresEvitar) mensagem += `• Cores a evitar: ${coresEvitar}\n`;
+                if (tipoLogo) mensagem += `• Tipo de logo: ${tipoLogo}\n`;
+                if (elementos) mensagem += `• Elementos: ${elementos}\n`;
+                mensagem += `\n`;
+
+                mensagem += `✍️ *INSPIRAÇÕES E APLICAÇÕES*\n`;
+                if (concorrentes) mensagem += `• Referências: ${concorrentes}\n`;
+                if (originalidade) mensagem += `• Originalidade: ${originalidade}\n`;
+                if (aplicacoes) mensagem += `• Aplicações: ${aplicacoes}\n`;
+                if (identidadeCompleta) mensagem += `• Identidade completa: ${identidadeCompleta}\n`;
+                if (versoes) mensagem += `• Versões: ${versoes}\n`;
+                mensagem += `\n`;
+
+                mensagem += `💬 *EXTRAS*\n`;
+                if (sentimento) mensagem += `• Sentimento: ${sentimento}\n`;
+                if (idioma) mensagem += `• Idioma: ${idioma}\n`;
+                if (observacoes) mensagem += `• Observações: ${observacoes}\n`;
+                mensagem += `\n`;
+
+                // Add file information for logo
+                const uploadLogo1 = document.getElementById('uploadLogo1');
+                
+                if (uploadLogo1.files.length > 0) {
+                    mensagem += `📁 *ARQUIVOS ENVIADOS*\n`;
+                    mensagem += `• Referências visuais (${uploadLogo1.files.length} arquivos):\n`;
+                    Array.from(uploadLogo1.files).forEach(file => {
+                        mensagem += `  - ${file.name} (${(file.size / 1024 / 1024).toFixed(1)}MB)\n`;
+                    });
+                    mensagem += `\n`;
+                }
+
+                mensagem += `🎨 *Vamos criar uma identidade visual única!*`;
+            }
+
+            const mensagemCodificada = encodeURIComponent(mensagem);
+            const urlWhatsApp = `https://wa.me/5598984966362?text=${mensagemCodificada}`;
+            window.open(urlWhatsApp, '_blank', 'noopener,noreferrer');
+        }
+
+        // Initialize file uploads
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFileUpload('uploadSites1', 'previewSites1', true);
+            setupFileUpload('uploadSites2', 'previewSites2', true);
+            setupFileUpload('uploadLogo1', 'previewLogo1', true);
+            
+            // Set initial tab
+            switchTab('sites');
+        });
+
+        // Input animations
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input, textarea').forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98c576d2046b2749',t:'MTc2MDA5MjQ1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
