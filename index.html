@@ -1,4 +1,4 @@
-<!-- === INÍCIO DO ARQUIVO CORRIGIDO === -->
+<!-- === BRIEFING IMPERIUM DESIGN (FUNDO BRANCO) === -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,112 +6,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Briefing Criativo | Imperium Design</title>
 <script src="https://cdn.tailwindcss.com"></script>
+
 <style>
-/* --- Mantém todos os estilos originais --- */
-body {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{font-family:'Inter',sans-serif;}
+body{
+  background-color:#ffffff;
+  color:#1f1f1f;
+  box-sizing:border-box;
+  min-height:100vh;
 }
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-* {
-  font-family: 'Inter', sans-serif;
+.upload-area{
+  border:2px dashed rgba(0,0,0,0.15);
+  transition:all .3s ease;
+  color:#333;
 }
-/* Gradientes e efeitos */
-.gradient-bg-sites {
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+.upload-area:hover{
+  border-color:#6366f1;
+  background:rgba(99,102,241,0.05);
 }
-.gradient-bg-logo {
-  background: linear-gradient(135deg, #1a0f1a 0%, #2e1a1a 50%, #3e1616 100%);
+.upload-area.dragover{
+  border-color:#6366f1;
+  background:rgba(99,102,241,0.1);
 }
-/* Efeito de hover nos cards */
-.card-hover {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.imperium-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:9999;
+  background:rgba(0,0,0,0.05);
+  border:1px solid rgba(0,0,0,0.1);
+  backdrop-filter:blur(8px);
+  border-radius:50%;
+  padding:10px;
+  transition:all .3s ease;
 }
-.card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.imperium-float:hover{
+  transform:scale(1.08);
+  background:rgba(0,0,0,0.1);
 }
-/* Inputs e animações */
-.input-focus {
-  transition: all 0.3s ease;
+.imperium-float img{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  filter:drop-shadow(0 0 4px rgba(0,0,0,0.25));
 }
-.input-focus:focus {
-  transform: scale(1.02);
+button.enviar-btn{
+  background:linear-gradient(90deg,#1a1a2e,#2e2e50);
+  color:white;
+  padding:14px 40px;
+  border-radius:12px;
+  font-weight:600;
+  font-size:18px;
+  transition:all .3s ease;
 }
-.upload-area {
-  border: 2px dashed rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-}
-.upload-area:hover {
-  border-color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.05);
-}
-.upload-area.dragover {
-  border-color: #6366f1;
-  background: rgba(99, 102, 241, 0.1);
-}
-/* Logo flutuante discreta */
-.imperium-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background-color: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  border-radius: 50%;
-  padding: 10px;
-  transition: all 0.3s ease;
-}
-.imperium-float:hover {
-  transform: scale(1.1);
-  background-color: rgba(255,255,255,0.15);
-}
-.imperium-float img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 6px rgba(0,0,0,0.3));
+button.enviar-btn:hover{
+  transform:scale(1.05);
+  background:linear-gradient(90deg,#2e2e50,#1a1a2e);
 }
 </style>
 </head>
-<body class="min-h-full gradient-bg-sites" id="mainBody">
 
-<!-- Conteúdo original (suas perguntas e formulários) -->
-<!-- ... cole aqui todo o conteúdo original que você já tem ... -->
+<body>
+<div class="max-w-4xl mx-auto p-6">
+  <h1 class="text-4xl font-extrabold text-center mb-4">Briefing Criativo | Imperium Design</h1>
+  <p class="text-center text-gray-600 mb-10">Preencha com suas informações e envie direto para nosso WhatsApp 📲</p>
 
-<!-- Botão flutuante com logo Imperium -->
-<a href="https://wa.me/5598984966362?text=Olá,%20vim%20do%20briefing%20Imperium%20Design!" 
-   target="_blank" 
-   class="imperium-float" 
-   title="Fale com a Imperium">
-    <img src="logo-imperium.png" alt="Imperium Design">
+  <!-- Exemplo simples do formulário -->
+  <div class="space-y-4">
+    <div>
+      <label class="font-semibold block mb-2">Nome da Empresa</label>
+      <input id="nomeEmpresa" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-400" placeholder="Digite o nome da empresa">
+    </div>
+    <div>
+      <label class="font-semibold block mb-2">Descrição do Negócio</label>
+      <textarea id="atividade" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-400" rows="3" placeholder="Descreva seu negócio..."></textarea>
+    </div>
+    <div>
+      <label class="font-semibold block mb-2">Arquivos de referência (imagens, PDFs, DOCs)</label>
+      <div class="upload-area rounded-lg p-6 text-center cursor-pointer" onclick="document.getElementById('uploadSites1').click()">
+        <p class="font-medium mb-1">📎 Clique para selecionar ou arraste arquivos aqui</p>
+        <p class="text-sm text-gray-500">(máximo 5 arquivos de até 10MB)</p>
+      </div>
+      <input type="file" id="uploadSites1" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
+    </div>
+  </div>
+
+  <div class="text-center mt-10">
+    <button onclick="enviarParaWhatsApp('sites')" class="enviar-btn">Enviar Briefing 🚀</button>
+  </div>
+</div>
+
+<!-- Logo flutuante -->
+<a href="https://wa.me/5598984966362?text=Olá,%20vim%20do%20Briefing%20Imperium%20Design!"
+   target="_blank"
+   class="imperium-float"
+   title="Fale com a Imperium Design">
+   <img src="logo-imperium.png" alt="Imperium Design">
 </a>
 
 <script>
-/* Correção no envio para WhatsApp */
-function enviarParaWhatsApp(tipo) {
-  let mensagem = "";
-  if (tipo === "sites") {
-    const nome = document.getElementById("nomeEmpresa").value.trim();
-    if (!nome) {
-      alert("Por favor, preencha o nome da empresa.");
-      return;
-    }
-    mensagem = `🚀 *BRIEFING DE SITE - IMPERIUM DESIGN* \n\nEmpresa: ${nome}\n\n`;
-  } else {
-    const nome = document.getElementById("nomeMarca").value.trim();
-    if (!nome) {
-      alert("Por favor, preencha o nome da marca.");
-      return;
-    }
-    mensagem = `🎨 *BRIEFING DE LOGO - IMPERIUM DESIGN* \n\nMarca: ${nome}\n\n`;
+// === Correção de Envio WhatsApp (textos + nomes dos arquivos) ===
+function enviarParaWhatsApp(tipo){
+  let mensagem="";
+  const nome=document.getElementById("nomeEmpresa").value.trim();
+  if(!nome){alert("Por favor, preencha o nome da empresa.");return;}
+  mensagem=`🚀 *BRIEFING DE SITE - IMPERIUM DESIGN*\n\n`;
+  mensagem+=`🏢 *Nome da empresa:* ${nome}\n`;
+
+  const atividade=document.getElementById("atividade").value.trim();
+  if(atividade) mensagem+=`\n💡 *Sobre o negócio:* ${atividade}\n`;
+
+  // Adiciona lista de arquivos
+  const arqs=document.getElementById("uploadSites1").files;
+  if(arqs.length>0){
+    mensagem+=`\n📁 *Arquivos selecionados:*\n`;
+    [...arqs].forEach(f=>{
+      mensagem+=`- ${f.name} (${(f.size/1024/1024).toFixed(1)}MB)\n`;
+    });
   }
-  
-  const url = "https://wa.me/5598984966362?text=" + encodeURIComponent(mensagem);
-  window.location.href = url; // ✅ Corrigido (funciona em todos os dispositivos)
+
+  mensagem+="\n\nEnviado automaticamente via Briefing Imperium 🦁";
+  const link=`https://wa.me/5598984966362?text=${encodeURIComponent(mensagem)}`;
+  window.open(link,"_blank");
 }
 </script>
 
 </body>
 </html>
-<!-- === FIM DO ARQUIVO CORRIGIDO === -->
+<!-- === FIM === -->
