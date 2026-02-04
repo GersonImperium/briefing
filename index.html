@@ -1,137 +1,187 @@
-<!-- === BRIEFING IMPERIUM DESIGN (FUNDO BRANCO) === -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Briefing Criativo | Imperium Design</title>
-<script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-*{font-family:'Inter',sans-serif;}
-body{
-  background-color:#ffffff;
-  color:#1f1f1f;
-  box-sizing:border-box;
-  min-height:100vh;
-}
-.upload-area{
-  border:2px dashed rgba(0,0,0,0.15);
-  transition:all .3s ease;
-  color:#333;
-}
-.upload-area:hover{
-  border-color:#6366f1;
-  background:rgba(99,102,241,0.05);
-}
-.upload-area.dragover{
-  border-color:#6366f1;
-  background:rgba(99,102,241,0.1);
-}
-.imperium-float{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  z-index:9999;
-  background:rgba(0,0,0,0.05);
-  border:1px solid rgba(0,0,0,0.1);
-  backdrop-filter:blur(8px);
-  border-radius:50%;
-  padding:10px;
-  transition:all .3s ease;
-}
-.imperium-float:hover{
-  transform:scale(1.08);
-  background:rgba(0,0,0,0.1);
-}
-.imperium-float img{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  filter:drop-shadow(0 0 4px rgba(0,0,0,0.25));
-}
-button.enviar-btn{
-  background:linear-gradient(90deg,#1a1a2e,#2e2e50);
-  color:white;
-  padding:14px 40px;
-  border-radius:12px;
-  font-weight:600;
-  font-size:18px;
-  transition:all .3s ease;
-}
-button.enviar-btn:hover{
-  transform:scale(1.05);
-  background:linear-gradient(90deg,#2e2e50,#1a1a2e);
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imperium Móveis | SaaS para Móveis Planejados</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+  </style>
 </head>
-
-<body>
-<div class="max-w-4xl mx-auto p-6">
-  <h1 class="text-4xl font-extrabold text-center mb-4">Briefing Criativo | Imperium Design</h1>
-  <p class="text-center text-gray-600 mb-10">Preencha com suas informações e envie direto para nosso WhatsApp 📲</p>
-
-  <!-- Exemplo simples do formulário -->
-  <div class="space-y-4">
-    <div>
-      <label class="font-semibold block mb-2">Nome da Empresa</label>
-      <input id="nomeEmpresa" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-400" placeholder="Digite o nome da empresa">
-    </div>
-    <div>
-      <label class="font-semibold block mb-2">Descrição do Negócio</label>
-      <textarea id="atividade" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-400" rows="3" placeholder="Descreva seu negócio..."></textarea>
-    </div>
-    <div>
-      <label class="font-semibold block mb-2">Arquivos de referência (imagens, PDFs, DOCs)</label>
-      <div class="upload-area rounded-lg p-6 text-center cursor-pointer" onclick="document.getElementById('uploadSites1').click()">
-        <p class="font-medium mb-1">📎 Clique para selecionar ou arraste arquivos aqui</p>
-        <p class="text-sm text-gray-500">(máximo 5 arquivos de até 10MB)</p>
+<body class="bg-slate-950 text-white">
+  <header class="bg-slate-950">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+      <div class="flex items-center gap-3">
+        <img src="logo-imperium.png" alt="Imperium" class="h-10 w-10 rounded-full" />
+        <span class="text-lg font-semibold">Imperium Móveis</span>
       </div>
-      <input type="file" id="uploadSites1" multiple accept="image/*,.pdf,.doc,.docx,.xml,.txt" class="hidden">
+      <div class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
+        <a href="#recursos" class="hover:text-white">Recursos</a>
+        <a href="#planos" class="hover:text-white">Planos</a>
+        <a href="#contato" class="hover:text-white">Contato</a>
+      </div>
+      <button class="rounded-full bg-indigo-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 hover:bg-indigo-400">Agendar demo</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute -top-24 right-0 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+      <div class="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p class="mb-4 inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-indigo-200">SaaS para móveis planejados</p>
+          <h1 class="text-4xl font-extrabold leading-tight md:text-5xl">Controle total do seu negócio de móveis planejados em um único sistema.</h1>
+          <p class="mt-6 text-lg text-slate-300">Gerencie clientes, orçamentos personalizados, produção, estoque, agenda e financeiro com dashboards em tempo real. Venda por assinatura integrada ao Stripe.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <button class="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-400">Solicitar proposta</button>
+            <button class="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:border-white">Ver funcionalidades</button>
+          </div>
+          <div class="mt-8 grid grid-cols-3 gap-4 text-center text-sm text-slate-300">
+            <div class="rounded-2xl bg-white/5 p-4">
+              <p class="text-2xl font-bold text-white">+32%</p>
+              <p>Conversão de orçamentos</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 p-4">
+              <p class="text-2xl font-bold text-white">-25%</p>
+              <p>Tempo de produção</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 p-4">
+              <p class="text-2xl font-bold text-white">99,9%</p>
+              <p>Disponibilidade</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-8 shadow-2xl shadow-indigo-500/10">
+          <div class="grid gap-6">
+            <div class="rounded-2xl bg-white/10 p-5">
+              <p class="text-sm text-indigo-200">Pipeline Comercial</p>
+              <h3 class="text-lg font-semibold">Clientes e orçamentos em tempo real</h3>
+              <p class="mt-2 text-sm text-slate-300">Acompanhe cada lead até a aprovação do projeto e envie orçamentos personalizados em poucos cliques.</p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-5">
+              <p class="text-sm text-indigo-200">Operação</p>
+              <h3 class="text-lg font-semibold">Planejamento de produção e estoque</h3>
+              <p class="mt-2 text-sm text-slate-300">Controle etapas, equipe, consumo de materiais e alertas de reposição automaticamente.</p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-5">
+              <p class="text-sm text-indigo-200">Financeiro</p>
+              <h3 class="text-lg font-semibold">Dashboards com receitas e margem</h3>
+              <p class="mt-2 text-sm text-slate-300">Visualize fluxo de caixa, custos por projeto e indicadores de rentabilidade.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recursos" class="mx-auto max-w-6xl px-6 py-16">
+      <div class="flex flex-col gap-4 text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-300">Recursos principais</p>
+        <h2 class="text-3xl font-bold">Tudo o que sua marcenaria precisa para crescer.</h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-2xl bg-white/5 p-6">
+          <h3 class="text-lg font-semibold">CRM e Relacionamento</h3>
+          <p class="mt-2 text-sm text-slate-300">Histórico completo do cliente, funil de vendas e comunicação centralizada.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <h3 class="text-lg font-semibold">Orçamentos Inteligentes</h3>
+          <p class="mt-2 text-sm text-slate-300">Templates com logo, cálculo automático de custos e envio via WhatsApp ou e-mail.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <h3 class="text-lg font-semibold">Agenda Integrada</h3>
+          <p class="mt-2 text-sm text-slate-300">Agendamentos de visitas, medições e instalação com lembretes.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <h3 class="text-lg font-semibold">Gestão de Equipe</h3>
+          <p class="mt-2 text-sm text-slate-300">Distribua tarefas por colaborador e acompanhe produtividade.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <h3 class="text-lg font-semibold">Produção e Estoque</h3>
+          <p class="mt-2 text-sm text-slate-300">Controle etapas de produção e materiais com alertas automáticos.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <h3 class="text-lg font-semibold">Financeiro e Assinaturas</h3>
+          <p class="mt-2 text-sm text-slate-300">MRR, fluxo de caixa e cobrança recorrente via Stripe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="bg-white/5">
+      <div class="mx-auto max-w-6xl px-6 py-16">
+        <div class="text-center">
+          <p class="text-sm font-semibold uppercase tracking-widest text-indigo-300">Planos</p>
+          <h2 class="mt-2 text-3xl font-bold">Assinaturas flexíveis para cada fase do seu negócio.</h2>
+        </div>
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <div class="rounded-3xl border border-white/10 bg-slate-950 p-8">
+            <h3 class="text-xl font-semibold">Essencial</h3>
+            <p class="mt-2 text-sm text-slate-300">CRM + Orçamentos</p>
+            <p class="mt-6 text-3xl font-bold">R$ 199<span class="text-base font-medium text-slate-400">/mês</span></p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li>✓ Cadastro ilimitado de clientes</li>
+              <li>✓ Templates personalizados</li>
+              <li>✓ Envio de PDFs</li>
+            </ul>
+            <button class="mt-8 w-full rounded-full bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/20">Começar</button>
+          </div>
+          <div class="rounded-3xl border border-indigo-500 bg-gradient-to-br from-indigo-500/30 to-transparent p-8 shadow-xl shadow-indigo-500/30">
+            <h3 class="text-xl font-semibold">Profissional</h3>
+            <p class="mt-2 text-sm text-indigo-100">Mais vendido</p>
+            <p class="mt-6 text-3xl font-bold">R$ 399<span class="text-base font-medium text-slate-200">/mês</span></p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-100">
+              <li>✓ Tudo do Essencial</li>
+              <li>✓ Estoque e produção</li>
+              <li>✓ Agenda e equipe</li>
+            </ul>
+            <button class="mt-8 w-full rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-400">Agendar demo</button>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-slate-950 p-8">
+            <h3 class="text-xl font-semibold">Enterprise</h3>
+            <p class="mt-2 text-sm text-slate-300">Customizado</p>
+            <p class="mt-6 text-3xl font-bold">Sob consulta</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li>✓ API e integrações</li>
+              <li>✓ SLA dedicado</li>
+              <li>✓ Consultoria de crescimento</li>
+            </ul>
+            <button class="mt-8 w-full rounded-full bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/20">Falar com vendas</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="mx-auto max-w-6xl px-6 py-16">
+      <div class="grid gap-8 lg:grid-cols-[1.3fr_1fr]">
+        <div>
+          <h2 class="text-3xl font-bold">Vamos transformar seu processo em escala.</h2>
+          <p class="mt-4 text-slate-300">Conte com onboarding guiado, integrações com Stripe e um time dedicado para fazer sua marcenaria vender mais.</p>
+          <div class="mt-6 grid gap-4 text-sm text-slate-300">
+            <p>✔ Implementação em até 7 dias</p>
+            <p>✔ Migração de dados assistida</p>
+            <p>✔ Suporte humano via WhatsApp</p>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h3 class="text-lg font-semibold">Fale com o time</h3>
+          <form class="mt-4 space-y-4">
+            <input class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Nome" />
+            <input class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Email" />
+            <input class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Empresa" />
+            <button type="button" class="w-full rounded-full bg-indigo-500 px-4 py-3 text-sm font-semibold hover:bg-indigo-400">Quero uma demonstração</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-slate-950">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-slate-400 md:flex-row">
+      <p>© 2024 Imperium Móveis. Todos os direitos reservados.</p>
+      <p>Integração nativa com Stripe • LGPD Ready</p>
     </div>
-  </div>
-
-  <div class="text-center mt-10">
-    <button onclick="enviarParaWhatsApp('sites')" class="enviar-btn">Enviar Briefing 🚀</button>
-  </div>
-</div>
-
-<!-- Logo flutuante -->
-<a href="https://wa.me/5598984966362?text=Olá,%20vim%20do%20Briefing%20Imperium%20Design!"
-   target="_blank"
-   class="imperium-float"
-   title="Fale com a Imperium Design">
-   <img src="logo-imperium.png" alt="Imperium Design">
-</a>
-
-<script>
-// === Correção de Envio WhatsApp (textos + nomes dos arquivos) ===
-function enviarParaWhatsApp(tipo){
-  let mensagem="";
-  const nome=document.getElementById("nomeEmpresa").value.trim();
-  if(!nome){alert("Por favor, preencha o nome da empresa.");return;}
-  mensagem=`🚀 *BRIEFING DE SITE - IMPERIUM DESIGN*\n\n`;
-  mensagem+=`🏢 *Nome da empresa:* ${nome}\n`;
-
-  const atividade=document.getElementById("atividade").value.trim();
-  if(atividade) mensagem+=`\n💡 *Sobre o negócio:* ${atividade}\n`;
-
-  // Adiciona lista de arquivos
-  const arqs=document.getElementById("uploadSites1").files;
-  if(arqs.length>0){
-    mensagem+=`\n📁 *Arquivos selecionados:*\n`;
-    [...arqs].forEach(f=>{
-      mensagem+=`- ${f.name} (${(f.size/1024/1024).toFixed(1)}MB)\n`;
-    });
-  }
-
-  mensagem+="\n\nEnviado automaticamente via Briefing Imperium 🦁";
-  const link=`https://wa.me/5598984966362?text=${encodeURIComponent(mensagem)}`;
-  window.open(link,"_blank");
-}
-</script>
-
+  </footer>
 </body>
 </html>
-<!-- === FIM === -->
